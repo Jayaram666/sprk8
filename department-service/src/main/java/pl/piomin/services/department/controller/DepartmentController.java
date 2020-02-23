@@ -23,20 +23,18 @@ import pl.piomin.services.department.model.Employee;
 public class DepartmentController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
-	
 
 	@Autowired
 	EmployeeClient employeeClient;
-	
+
 	@GetMapping("/feign")
 	public List<Employee> listRest() {
 		return employeeClient.findByDepartment("1");
 	}
-	
 
 	@GetMapping("/{id}")
 	public Department findById(@PathVariable("id") String id) {
-		Department d=new Department();
+		Department d = new Department();
 		d.setId("2");
 		d.setName("nme");
 		d.setOrganizationId(2L);
@@ -46,20 +44,23 @@ public class DepartmentController {
 		e.setName("jayaram");
 		List<Employee> le = new ArrayList<>();
 		le.add(e);
-		
-		
+
+		employeeClient.findByDepartment("1");
+		System.out.println("Feigh got called ");
 		d.setEmployees(le);
-		
-			return d;
+		return d;
 	}
-	
-	
-//	@GetMapping("/organization/{organizationId}/with-employees")
-//	public List<Department> findByOrganizationWithEmployees(@PathVariable("organizationId") Long organizationId) {
-//		LOGGER.info("Department find: organizationId={}", organizationId);
-//		List<Department> departments = repository.findByOrganizationId(organizationId);
-//		departments.forEach(d -> d.setEmployees(employeeClient.findByDepartment(d.getId())));
-//		return departments;
-//	}
-	
+
+	// @GetMapping("/organization/{organizationId}/with-employees")
+	// public List<Department>
+	// findByOrganizationWithEmployees(@PathVariable("organizationId") Long
+	// organizationId) {
+	// LOGGER.info("Department find: organizationId={}", organizationId);
+	// List<Department> departments =
+	// repository.findByOrganizationId(organizationId);
+	// departments.forEach(d ->
+	// d.setEmployees(employeeClient.findByDepartment(d.getId())));
+	// return departments;
+	// }
+
 }
