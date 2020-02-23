@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  backend:
+    serviceName: default-http-backend
+    servicePort: 80
+  rules:
+  - http:
+      paths:
+      - path: /employee
+        backend:
+          serviceName: employee
+          servicePort: 8080
+      - path: /department
+        backend:
+          serviceName: department
+          servicePort: 8080
+      - path: /gateway
+        backend:
+          serviceName: gateway
+          servicePort: 8080    

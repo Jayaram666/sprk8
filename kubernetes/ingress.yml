@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: http-ingress
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+   - http:
+      paths:
+      - backend:
+          serviceName: second
+          servicePort: 80
+        path: /jayaram
+        backend:
+          serviceName: second
+          servicePort: 80
+        path: /first
+        backend:
+          serviceName: account-service
+          servicePort: 2222
+        path: /account/accounts
+        
+    
+        
+        

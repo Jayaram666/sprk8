@@ -1,26 +1,22 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: gateway-ingress
+  name: sprk8
   annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
-  backend:
-    serviceName: default-http-backend
-    servicePort: 80
   rules:
-  - host: microservices.info
-    http:
+   - http:
       paths:
-      - path: /employee
-        backend:
+      - backend:
           serviceName: employee
           servicePort: 8080
-      - path: /department
-        backend:
+        path: /employee
+     - backend:
           serviceName: department
           servicePort: 8080
-      - path: /organization
-        backend:
-          serviceName: organization
-          servicePort: 8080
+        path: /department
+        
+        

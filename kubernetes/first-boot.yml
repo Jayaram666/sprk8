@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: first-boot
+spec:
+  template:
+    metadata:
+      labels:
+        app: first-boot
+    spec:
+      containers:
+      - image: jayaram269/first-boot
+        name: first-boot
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: first-boot
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+    targetPort: 27017
+  selector:
+    app: first-boot
+  type: LoadBalancer
+---
+        
+  
