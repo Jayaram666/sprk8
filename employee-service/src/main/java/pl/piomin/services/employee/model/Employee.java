@@ -1,12 +1,9 @@
 package pl.piomin.services.employee.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "employee")
 public class Employee {
 
-	@Id
+	
 	private String id;
 	private Long organizationId;
 	private Long departmentId;

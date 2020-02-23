@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: gateway
-        image: piomin/gateway:1.0
+        image: jayaram269/gateway
         ports:
         - containerPort: 8080
 ---

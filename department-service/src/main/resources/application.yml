@@ -1,9 +1,6 @@
 spring:
   application:
     name: department
-  data:
-    mongodb:
-      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb.default/${MONGO_DATABASE}
       
 logging:
   pattern: 
@@ -17,3 +14,5 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+      
+  
