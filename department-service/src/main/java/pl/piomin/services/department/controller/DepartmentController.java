@@ -45,7 +45,8 @@ public class DepartmentController {
 		List<Employee> le = new ArrayList<>();
 		le.add(e);
 
-		employeeClient.findByDepartment("1");
+		List<Employee> lres=employeeClient.findByDepartment("1");
+		System.out.println("The response is "+lres);
 		System.out.println("Feigh got called ");
 		d.setEmployees(le);
 		return d;
