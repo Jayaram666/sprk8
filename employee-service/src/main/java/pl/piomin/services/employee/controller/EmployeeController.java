@@ -18,11 +18,15 @@ public class EmployeeController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
 
-	
 	@PostMapping("/")
 	public Employee add(@RequestBody Employee employee) {
 		LOGGER.info("Employee add...: {}", employee);
 		return null;
+	}
+
+	@GetMapping("/greet/{name}")
+	public String greet(@PathVariable("name") String name) {
+		return "HI FROM EMPLOYEESERVICE MR " + name;
 	}
 
 	@GetMapping("/{id}")

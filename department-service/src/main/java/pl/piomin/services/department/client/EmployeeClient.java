@@ -13,5 +13,6 @@ public interface EmployeeClient {
 
 	@GetMapping("/department/{departmentId}")
 	List<Employee> findByDepartment(@PathVariable("departmentId") String departmentId);
-	
+	@GetMapping("/greet/{name}")
+	String greet(@PathVariable("name") String name);
 }
